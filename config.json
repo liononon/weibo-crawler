@@ -1,10 +1,11 @@
 {
-    "user_id_list": ["1669879400"],
+    "user_id_list": "user_id_list.txt",
     "filter": 1,
     "remove_html_tag": 1,
-    "since_date": "2018-01-01",
+    "since_date": "2020-01-01 01:01",
     "start_page": 1,
-    "write_mode": ["csv"],
+    "write_mode": ["mysql","mongo"],
+    "send_mode": ["email"],
     "original_pic_download": 1,
     "retweet_pic_download": 0,
     "original_video_download": 1,
@@ -19,5 +20,13 @@
         "user": "root",
         "password": "123456",
         "charset": "utf8mb4"
+    },
+    "mongo_config": "mongodb://admin:123456@127.0.0.1:27017/",
+    "email_config":{
+        "host":"",
+        "user":"",
+        "pass":"",
+        "sender":"",
+        "receivers":""
     }
 }
