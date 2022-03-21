@@ -1488,16 +1488,14 @@ class Weibo(object):
             message['To'] = self._format_addr('管理员 <%s>' % email_config['receivers'])
             message['Subject'] = Header(w['text'],'utf-8')
             if 'file_path' in w:
-                if ',' in w['file_path']:
-                    file_path_list = w['file_path'].split(',')
-                    html_text_str = "<table>"
-                    for i, val in enumerate(file_path_list):        
-                        html_text_str = html_text_str + "<tr><td><img src=" + "cid:" + str(i) + "></td></tr>"
-                        #  = MIMEText("""<tr><td><img src="cid:0"></td></tr></table>""","html","utf-8")
-                        message.attach(self.addimg(val,str(i)))
-                    html_text_str = html_text_str + "</table>"
-                    html_text = MIMEText(html_text_str,"html","utf-8")   
-                    message.attach(html_text)    
+                file_path_list = w['file_path'].split(',')
+                html_text_str = "<table>"
+                for i, val in enumerate(file_path_list):        
+                    html_text_str = html_text_str + "<tr><td><img src=" + "cid:" + str(i) + "></td></tr>"
+                    message.attach(self.addimg(val,str(i)))
+                html_text_str = html_text_str + "</table>"
+                html_text = MIMEText(html_text_str,"html","utf-8")   
+                message.attach(html_text)    
             else:
                 message.attach(MIMEText(w['text'], 'plain', 'utf-8'))
             
